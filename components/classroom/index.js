@@ -11,16 +11,25 @@ const pool = new Pool({
 });
 
 router.get("/", async (req, res, next) => {
-  const { rows } = await pool.query("select * from classes");
-  res.status(200).json(rows);
+  try {
+    const { rows } = await pool.query("select * from classes");
+    res.status(200).json(rows);
+  } catch (err) {
+    res.json(err);
+  }
 });
 
 router.post("/", async (req, res, next) => {
-  console.log(req.body);
-  await pool.query(`insert into classes ( name) values ('${req.body.name}');`);
-  res.status(201).json({
-    message: "Task created successfully",
-  });
+  try {
+    await pool.query(
+      `insert into classes ( name) values ('${req.body.name}');`
+    );
+    res.status(201).json({
+      message: "Task created successfully",
+    });
+  } catch (err) {
+    res.json(err);
+  }
 });
 
 module.exports = router;

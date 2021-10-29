@@ -8,6 +8,9 @@ const pool = new Pool({
   database: "d4alf9m85cjslp",
   password: "dfc83b5ce545ac073d1402acce404c635e709d9fef4a6cb2d43e7fb3b2f317a3",
   port: 5432,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 router.get("/", async (req, res, next) => {

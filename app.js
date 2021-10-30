@@ -5,8 +5,6 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
 const classRoomRouter = require("./components/classroom/index");
 const app = express();
 app.use(cors());
